@@ -46,7 +46,7 @@
 
     <!-- Action klinik.ruangan -->
     <record id="action_klinik_ruangan" model="ir.actions.act_window">
-        <field name="name">Klinik ruangan</field>
+        <field name="name">Clinic Room</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">klinik.ruangan</field>
         <field name="view_mode">tree,form</field>

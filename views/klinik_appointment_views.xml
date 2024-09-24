@@ -63,6 +63,7 @@
                     </group>
                     <group>
                         <field name="dokter_id" />
+                        <field name="room_id" />
                     </group>
                     <footer>
                         <button name="action_confirm" type="object" string="Confirm"

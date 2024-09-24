@@ -1,12 +1,11 @@
-from odoo import models, fields, api
-from odoo.exceptions import UserError
+from odoo import models, fields
 
 
 class KlinikRuangan(models.Model):
     _name = "klinik.ruangan"
     _description = "Room for Pet Clinic"
 
-    name = fields.Char(string="Appointment Reference", required=True, default="New")
+    name = fields.Char(string="Room Reference", required=True, default="New")
     is_available = fields.Boolean(string="Is Available", default=True)
     unavailable_until = fields.Datetime(string="Unavailable Until")
 

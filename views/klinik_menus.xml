@@ -1,55 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <menuitem id="menu_klinik_root" name="Klinik" sequence="1" />
 
-  <menuitem id="menu_klinik_hewan" name="Klinik Hewan" parent="menu_klinik_root" sequence="1"
-    action="action_klinik_hewan" />
-
-  <menuitem id="menu_klinik_pelanggan" name="Klinik Pelanggan" parent="menu_klinik_root"
-    sequence="2" action="action_klini_pelanggan" />
-
-  <menuitem id="menu_klinik_appointment" parent="menu_klinik_root"
-    action="action_klinik_appointment" name="Manage Appointments" />
-
-  <menuitem id="menu_product_layanan_variants"
-    name="Layanan Variants"
-    parent="menu_klinik_root"
-    action="product_template_action_layanan"
-    sequence="10"
+  <menuitem
+    id="menu_klinik_root"
+    name="Klinik"
+    sequence="1"
   />
 
-  <menuitem id="menu_product_product_variants"
-    name="Product Variants"
+  <!-- Patient View -->
+
+  <menuitem
+    id="menu_patient"
+    name="Patient"
+    sequence="2"
     parent="menu_klinik_root"
-    action="product_template_action_product"
-    sequence="10"
   />
 
-  <menuitem id="menu_product_obat_variants"
-    name="Obat Variants"
+  <menuitem
+    id="menu_klinik_hewan"
+    name="Klinik Hewan"
+    parent="menu_patient"
+    sequence="2"
+    action="action_klinik_hewan"
+  />
+
+  <menuitem
+    id="menu_klinik_pelanggan"
+    name="Klinik Pelanggan"
+    parent="menu_patient"
+    sequence="1"
+    action="action_klini_pelanggan"
+  />
+
+  <!-- Patient View -->
+
+  <!-- Appoiment View -->
+
+  <menuitem
+    id="menu_appoiment"
+    name="Appoiment"
+    sequence="3"
     parent="menu_klinik_root"
-    action="product_template_action_obat"
-    sequence="10"
+  />
+
+  <menuitem
+    id="menu_klinik_appointment"
+    parent="menu_appoiment"
+    action="action_klinik_appointment"
+    name="Appointments"
+    sequence="1"
+  />
+
+  <menuitem id="action_klini_ruangan"
+    name="Clinic Room"
+    parent="menu_appoiment"
+    action="action_klinik_ruangan"
+    sequence="2"
+  />
+
+  <!-- Appoiment View -->
+
+  <!-- Health View -->
+
+  <menuitem
+    id="menu_healt"
+    name="Health"
+    sequence="3"
+    parent="menu_klinik_root"
   />
 
   <menuitem id="menu_dokter"
     name="Dokter"
-    parent="menu_klinik_root"
+    parent="menu_healt"
     action="action_klinik_dokter"
-    sequence="10"
+    sequence="1"
   />
 
   <menuitem id="action_klini_resep"
     name="Resep"
-    parent="menu_klinik_root"
+    parent="menu_healt"
     action="action_klinik_resep"
-    sequence="10"
+    sequence="2"
   />
 
-  <menuitem id="action_klini_ruangan"
-    name="Ruangan"
+  <!-- Health View -->
+
+  <!-- Master Data View -->
+
+  <menuitem
+    id="menu_data"
+    name="Master Data"
+    sequence="4"
     parent="menu_klinik_root"
-    action="action_klinik_ruangan"
-    sequence="10"
   />
+
+  <menuitem id="menu_product_layanan_variants"
+    name="Layanan Variants"
+    parent="menu_data"
+    action="product_template_action_layanan"
+    sequence="1"
+  />
+
+  <menuitem id="menu_product_product_variants"
+    name="Product Variants"
+    parent="menu_data"
+    action="product_template_action_product"
+    sequence="2"
+  />
+
+  <menuitem id="menu_product_obat_variants"
+    name="Obat Variants"
+    parent="menu_data"
+    action="product_template_action_obat"
+    sequence="3"
+  />
+
+  <!-- Master Data View -->
+
 </odoo>

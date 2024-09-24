@@ -1,4 +1,5 @@
 from odoo import models, fields, api
+from odoo.exceptions import UserError
 
 class KlinikAppointment(models.Model):
     _name = "klinik.appointment"
@@ -20,6 +21,13 @@ class KlinikAppointment(models.Model):
         string="Status",
         required=True,
     )
+
+    @api.onchange('pet_id')
+    def _onchange_pet_id(self):
+        if self.pet_id:
+            self.partner_id = self.pet_id.pemilik
+        else:
+            raise UserError('Pet Tidak Ada Pemilik!')
 
     @api.model
     def create(self, vals):

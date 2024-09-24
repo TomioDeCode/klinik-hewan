@@ -1,5 +1,4 @@
 from odoo import fields, models, api
-from odoo.exceptions import UserError
 
 
 class KlinikDokter(models.Model):
@@ -11,6 +10,16 @@ class KlinikDokter(models.Model):
     phone = fields.Char(string="Telepon", required=True)
     email = fields.Char(string="Email", required=True)
     alamat = fields.Text(string="Alamat", required=False)
+
+    klinik_resep_ids = fields.One2many("klinik.resep", "dokter_id", string="Reseps")
+
+    appointment_id = fields.One2many(
+        "klinik.appointment", "dokter_id", string="Janji Temu"
+    )
+
+    commission_amount = fields.Float(
+        compute="_compute_commission_amount", string="Commission Total", store=True
+    )
 
     @api.onchange("name")
     def _onchange_name(self):
@@ -28,6 +37,12 @@ class KlinikDokter(models.Model):
             else:
                 self.alamat = False
 
-    appointment_id = fields.One2many(
-        "klinik.appointment", "dokter_id", string="Janji Temu"
-    )
+    @api.depends("klinik_resep_ids.commission_amount")
+    def _compute_commission_amount(self):
+        for doctor in self:
+            total_commission = sum(
+                resep.commission_amount
+                for resep in doctor.klinik_resep_ids
+                if resep.dokter_id == doctor
+            )
+            doctor.commission_amount = total_commission

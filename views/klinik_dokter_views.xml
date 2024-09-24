@@ -39,6 +39,9 @@
                             </tree>
                         </field>
                     </group>
+                    <group>
+                        <field name="commission_amount" />
+                    </group>
                 </sheet>
             </form>
         </field>

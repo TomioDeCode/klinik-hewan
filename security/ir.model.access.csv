@@ -5,3 +5,4 @@ access_product_product,access_product_product,model_product_product,base.group_u
 access_klinik_pelanggan_manager,klinik_pelanggan_manager,model_klinik_pelanggan,base.group_user,1,1,1,1
 access_klinik_appointment_manager,klinik_appointment_manager,model_klinik_appointment,,1,1,1,1
 access_klinik_ruangan_manager,klinik_ruangan_manager,model_klinik_ruangan,,1,1,1,1
+access_klinik_dokter_manager,klinik_dokter_manager,model_klinik_dokter,,1,1,1,1

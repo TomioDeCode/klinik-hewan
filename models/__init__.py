@@ -5,3 +5,4 @@ from . import klinik_janji
 from . import product_template
 from . import product_product
 from . import klinik_ruangan
+from . import klinik_dokter

@@ -45,4 +45,11 @@
     action="action_klinik_resep"
     sequence="10"
   />
+
+  <menuitem id="action_klini_ruangan"
+    name="Ruangan"
+    parent="menu_klinik_root"
+    action="action_klinik_ruangan"
+    sequence="10"
+  />
 </odoo>

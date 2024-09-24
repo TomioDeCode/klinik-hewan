@@ -7,6 +7,7 @@ class KlinikDokter(models.Model):
     name = fields.Many2one(
         "res.partner", domain="[('klinik_member', '=', 'dokter')]", string="Dokter"
     )
+    
     phone = fields.Char(string="Telepon", required=True)
     email = fields.Char(string="Email", required=True)
     alamat = fields.Text(string="Alamat", required=False)

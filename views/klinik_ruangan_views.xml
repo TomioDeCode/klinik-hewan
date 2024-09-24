@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- View klinik.ruangan View Tree -->
+    <record id="view_klinik_ruangan_tree" model="ir.ui.view">
+        <field name="name">view.klinik.ruangan.tree</field>
+        <field name="model">klinik.ruangan</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="is_available" />
+                <field name="unavailable_until" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- View klinik.ruangan form -->
+    <record id="view_klinik_ruangan_form" model="ir.ui.view">
+        <field name="name">view.klinik.ruangan.form</field>
+        <field name="model">klinik.ruangan</field>
+        <field name="arch" type="xml">
+            <form string="Klinik ruangan">
+                <sheet>
+                    <group>
+                        <field name="name" required="1" />
+                        <field name="is_available" required="1" />
+                        <field name="unavailable_until" required="1" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- View klinik.ruangan search -->
+    <record id="view_klini_ruangan_search" model="ir.ui.view">
+        <field name="name">view.klinik.ruangan.search</field>
+        <field name="model">klinik.ruangan</field>
+        <field name="arch" type="xml">
+            <search>
+                <group expand="1" string="Group By">
+                    <filter string="Name" name="name" domain="[]" context="{'group_by':'name'}" />
+                </group>
+                <field name="name" placeholder="Search by Name" />
+            </search>
+        </field>
+    </record>
+
+    <!-- Action klinik.ruangan -->
+    <record id="action_klinik_ruangan" model="ir.actions.act_window">
+        <field name="name">Klinik ruangan</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">klinik.ruangan</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                There are no records, click here to add new Klini ruangan.
+            </p>
+        </field>
+    </record>
+</odoo>

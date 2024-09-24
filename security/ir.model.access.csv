@@ -1,0 +1,6 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_klinik_hewan_manager,klinik_hewan_manager,model_klinik_hewan,,1,1,1,1
+access_res_partner,access_res_partner,model_res_partner,base.group_user,1,1,1,1
+access_product_product,access_product_product,model_product_product,base.group_user,1,1,1,1
+access_klinik_pelanggan_manager,klinik_pelanggan_manager,model_klinik_pelanggan,base.group_user,1,1,1,1
+access_klinik_appointment_manager,klinik_appointment_manager,model_klinik_appointment,,1,1,1,1

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <!-- Action for viewing only 'layanan' products -->
+  <record id="product_template_action_layanan" model="ir.actions.act_window">
+    <field name="name">Layanan Products</field>
+    <field name="res_model">product.template</field>
+    <field name="view_mode">kanban,tree,form</field>
+    <field name="domain">[('jenis_product', '=', 'layanan')]</field>
+    <field name="context">{}</field>
+    <field name="help" type="html">
+      <p class="o_view_nocontent_smiling_face">
+        Create a new layanan product.
+      </p>
+    </field>
+  </record>
+
+  <!-- Action for viewing only 'product' products -->
+  <record id="product_template_action_product" model="ir.actions.act_window">
+    <field name="name">Product Products</field>
+    <field name="res_model">product.template</field>
+    <field name="view_mode">kanban,tree,form</field>
+    <field name="domain">[('jenis_product', '=', 'product')]</field>
+    <field name="context">{}</field>
+    <field name="help" type="html">
+      <p class="o_view_nocontent_smiling_face">
+        Create a new layanan product.
+      </p>
+    </field>
+  </record>
+
+  <!-- Action for viewing only 'obat' products -->
+  <record id="product_template_action_obat" model="ir.actions.act_window">
+    <field name="name">Obat Products</field>
+    <field name="res_model">product.template</field>
+    <field name="view_mode">kanban,tree,form</field>
+    <field name="domain">[('jenis_product', '=', 'obat')]</field>
+    <field name="context">{}</field>
+    <field name="help" type="html">
+      <p class="o_view_nocontent_smiling_face">
+        Create a new layanan product.
+      </p>
+    </field>
+  </record>
+</odoo>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- View klinik.hewan View Tree -->
+    <record id="view_klinik_hewan_tree" model="ir.ui.view">
+        <field name="name">view.klinik.hewan.tree</field>
+        <field name="model">klinik.hewan</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="pemilik" />
+                <field name="name" />
+                <field name="jenis_hewan" />
+                <field name="jenis_kelamin" />
+                <field name="tgl_lahir" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- View klinik.hewan form -->
+    <record id="view_klinik_hewan_form" model="ir.ui.view">
+        <field name="name">view.klinik.hewan.form</field>
+        <field name="model">klinik.hewan</field>
+        <field name="arch" type="xml">
+            <form string="Klinik Hewan">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="image" widget="image" class="oe_avatar" />
+                            <field name="name" />
+                            <field name="jenis_hewan" />
+                            <field name="ras" />
+                            <field name="jenis_kelamin" />
+                            <field name="tgl_lahir" />
+                            <field name="bb_badan" />
+                            <field name="tgl_periksa" />
+                        </group>
+                        <group>
+                            <field name="pemilik" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- View klinik.hewan search -->
+    <record id="view_klinik_hewan_search" model="ir.ui.view">
+        <field name="name">view.klinik.hewan.search</field>
+        <field name="model">klinik.hewan</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <field name="jenis_hewan" />
+                <field name="jenis_kelamin" />
+                <field name="pemilik" />
+                <group expand="1" string="Group By">
+                    <filter string="Jenis Hewan" name="jenis_hewan" domain="[]"
+                        context="{'group_by':'jenis_hewan'}" />
+                    <filter string="Jenis Kelamin" name="jenis_kelamin" domain="[]"
+                        context="{'group_by':'jenis_kelamin'}" />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action klinik.hewan -->
+    <record id="action_klinik_hewan" model="ir.actions.act_window">
+        <field name="name">Klinik Hewan</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">klinik.hewan</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

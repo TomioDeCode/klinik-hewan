@@ -1,0 +1,92 @@
+<odoo>
+    <data noupdate="1">
+        <record id="seq_klinik_appointment" model="ir.sequence">
+            <field name="name">Klinik Appointment</field>
+            <field name="code">klinik.appointment</field>
+            <field name="prefix">APPT-</field>
+            <field name="padding">5</field>
+            <field name="number_next">1</field>
+        </record>
+    </data>
+
+    <!-- Calendar View -->
+    <record id="view_klinik_appointment_calendar" model="ir.ui.view">
+        <field name="name">klinik.appointment.calendar</field>
+        <field name="model">klinik.appointment</field>
+        <field name="arch" type="xml">
+            <calendar string="Appointments" date_start="appointment_date"
+                date_stop="appointment_date">
+                <field name="name" />
+                <field name="partner_id" />
+                <field name="pet_id" />
+                <field name="state" />
+            </calendar>
+        </field>
+    </record>
+
+    <!-- Tree View -->
+    <record id="view_klinik_appointment_tree" model="ir.ui.view">
+        <field name="name">klinik.appointment.tree</field>
+        <field name="model">klinik.appointment</field>
+        <field name="arch" type="xml">
+            <tree string="Appointments" class="oe_tree">
+                <field name="name" />
+                <field name="partner_id" />
+                <field name="pet_id" />
+                <field name="appointment_date" />
+                <field name="state" widget="statusbar" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_klinik_appointment_form" model="ir.ui.view">
+        <field name="name">klinik.appointment.form</field>
+        <field name="model">klinik.appointment</field>
+        <field name="arch" type="xml">
+            <form string="Appointment" class="oe_form">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" readonly="1" />
+                            <field name="partner_id" />
+                        </group>
+                        <group>
+                            <field name="pet_id" />
+                            <field name="appointment_date" />
+                        </group>
+                    </group>
+                    <group>
+                        <field name="state" widget="statusbar"
+                            statusbar_visible="draft,confirmed,cancelled" />
+                        <field name="notes" />
+                    </group>
+                    <footer>
+                        <button name="action_confirm" type="object" string="Confirm"
+                            class="btn btn-primary"
+                            invisible="state!='draft'" />
+                        <button name="action_done" type="object" string="Mark as Done"
+                            class="btn btn-success"
+                            invisible="state!='confirmed'" />
+                        <button name="action_cancel" type="object" string="Cancel"
+                            class="btn btn-danger"
+                            invisible="state!='draft' and state!='confirmed'" />
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <!-- Action Window -->
+    <record id="action_klinik_appointment" model="ir.actions.act_window">
+        <field name="name">Manage Appointments</field>
+        <field name="res_model">klinik.appointment</field>
+        <field name="view_mode">calendar,tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create a new appointment.
+            </p>
+        </field>
+    </record>
+</odoo>

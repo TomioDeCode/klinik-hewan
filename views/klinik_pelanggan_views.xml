@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- View klinik.pelanggan View Tree -->
+    <record id="view_klini_pelanggan_tree" model="ir.ui.view">
+        <field name="name">view.klinik.pelanggan.tree</field>
+        <field name="model">klinik.pelanggan</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="email" />
+                <field name="phone" />
+                <field name="alamat" />
+                <field name="pet_ids" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- View klinik.pelanggan form -->
+    <record id="view_klini_pelanggan_form" model="ir.ui.view">
+        <field name="name">view.klinik.pelanggan.form</field>
+        <field name="model">klinik.pelanggan</field>
+        <field name="arch" type="xml">
+            <form string="Klinik Pelanggan">
+                <sheet>
+                    <group>
+                        <field name="name" required="1" />
+                        <field name="email" required="1" />
+                        <field name="phone" required="1" />
+                        <field name="alamat" />
+                    </group>
+                    <group>
+                        <field name="pet_ids" required="1" />
+                        <!-- Remove attrs and add a widget or logic to manage button visibility -->
+                        <button name="redirect_appoiment"
+                            type="object"
+                            string="Create Appoiment"
+                            class="btn-primary"
+                        />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- View klinik.pelanggan search -->
+    <record id="view_klini_pelanggan_search" model="ir.ui.view">
+        <field name="name">view.klinik.pelanggan.search</field>
+        <field name="model">klinik.pelanggan</field>
+        <field name="arch" type="xml">
+            <search>
+                <group expand="1" string="Group By">
+                    <filter string="Name" name="name" domain="[]" context="{'group_by':'name'}" />
+                </group>
+                <field name="name" placeholder="Search by Name" />
+            </search>
+        </field>
+    </record>
+
+    <!-- Action klinik.pelanggan -->
+    <record id="action_klini_pelanggan" model="ir.actions.act_window">
+        <field name="name">Klinik Pelanggan</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">klinik.pelanggan</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                There are no records, click here to add new Klini Pelanggan.
+            </p>
+        </field>
+    </record>
+</odoo>

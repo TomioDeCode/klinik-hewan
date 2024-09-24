@@ -27,3 +27,7 @@ class KlinikDokter(models.Model):
                 self.alamat = f"{self.name.street or ''}, {self.name.city or ''}, {self.name.state_id.name or ''}, {self.name.zip or ''}, {self.name.country_id.name or ''}"
             else:
                 self.alamat = False
+
+    appointment_id = fields.One2many(
+        "klinik.appointment", "dokter_id", string="Janji Temu"
+    )

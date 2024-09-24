@@ -8,6 +8,7 @@ class KlinikAppointment(models.Model):
     name = fields.Char(string="Appointment Reference", required=True, default="New")
     partner_id = fields.Many2one("res.partner", string="Customer", required=True)
     pet_id = fields.Many2one("klinik.hewan", string="Pet", required=True)
+    dokter_id = fields.Many2one('klinik.dokter', "Dokter", required=True)
     appointment_date = fields.Datetime(string="Appointment Date", required=True)
     notes = fields.Text(string="Notes")
     state = fields.Selection(
@@ -26,8 +27,6 @@ class KlinikAppointment(models.Model):
     def _onchange_pet_id(self):
         if self.pet_id:
             self.partner_id = self.pet_id.pemilik
-        else:
-            raise UserError('Pet Tidak Ada Pemilik!')
 
     @api.model
     def create(self, vals):

@@ -30,6 +30,15 @@
                         <field name="email" />
                         <field name="alamat" />
                     </group>
+                    <group>
+                        <field name="appointment_id" widget="one2many_list">
+                            <tree editable="bottom">
+                                <field name="appointment_date"/>
+                                <field name="pet_id"/>
+                                <field name="notes"/>
+                            </tree>
+                        </field>
+                    </group>
                 </sheet>
             </form>
         </field>

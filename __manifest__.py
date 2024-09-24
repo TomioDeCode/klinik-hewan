@@ -13,6 +13,8 @@
         "views/klinik_pelanggan_views.xml",
         "views/product_product_views.xml",
         "views/klinik_appointment_views.xml",
+        "views/klinik_dokter_views.xml",
+
         "views/klinik_menus.xml",
     ],
     'installable': True,

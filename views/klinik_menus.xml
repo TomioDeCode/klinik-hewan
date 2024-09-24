@@ -31,4 +31,11 @@
     action="product_template_action_obat"
     sequence="10"
   />
+
+  <menuitem id="menu_dokter"
+    name="Dokter"
+    parent="menu_klinik_root"
+    action="action_klinik_dokter"
+    sequence="10"
+  />
 </odoo>

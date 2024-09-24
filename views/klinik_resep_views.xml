@@ -24,6 +24,7 @@
                 <sheet>
                     <group>
                         <field name="name" required="1" />
+                        <field name="dokter_id" required="1" />
                     </group>
                     <group>
                         <field name="product_id" />
@@ -36,6 +37,8 @@
                     </group>
                     <group>
                         <field name="total_price" />
+                        <field name="commission_amount" />
+                        <field name="final_price" />
                     </group>
                 </sheet>
             </form>

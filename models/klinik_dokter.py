@@ -47,3 +47,7 @@ class KlinikDokter(models.Model):
                 if resep.dokter_id == doctor
             )
             doctor.commission_amount = total_commission
+
+    @api.model
+    def count_dokters(self):
+        return self.search_count([])

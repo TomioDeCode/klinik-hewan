@@ -66,3 +66,17 @@ class KlinikResep(models.Model):
     def _compute_final_price(self):
         for record in self:
             record.final_price = record.total_price - record.commission_amount
+
+    def action_redirect_to_payment(self):
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Pembayaran',
+            'res_model': 'klinik.pembayaran',
+            'view_mode': 'form',
+            'view_type': 'form',
+            'context': {
+                'default_resep_id': self.id,  # Redirecting to the payment with the current recipe id
+                'default_amount': self.final_price,  # Optional: Set default amount if needed
+            },
+            'target': 'current',  # Open in the same window
+        }

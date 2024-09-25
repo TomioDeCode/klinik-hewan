@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template id="template_project" xml:space="preserve">
+    <t t-name="KlinikDashBoardMain">
+        <div class="dashboard-main">
+            <div class="project-count-row">
+                <div class="col-md-3 project-count-container"> 
+                    <span class="project_count" id="total_projects">
+                        <t t-esc="this.client_state.client_count"/>
+                    </span>
+                    <br/>
+                    <span class="project_box_title">Clients</span>
+                </div>
+                <div class="col-md-3 project-count-container"> 
+                    <span class="project_count" id="total_projects">
+                        <t t-esc="this.dokter_state.dokter_count"/>
+                    </span>
+                    <br/>
+                    <span class="project_box_title">Doctors</span>
+                </div>
+                <div class="col-md-3 project-count-container"> 
+                    <span class="project_count" id="total_projects">
+                        <t t-esc="this.janji_state.janji_count"/>
+                    </span>
+                    <br/>
+                    <span class="project_box_title">Appointments</span>
+                </div>
+                <div class="col-md-3 project-count-container"> 
+                    <span class="project_count" id="total_projects">
+                        <t t-esc="this.animal_state.animal_count"/>
+                    </span>
+                    <br/>
+                    <span class="project_box_title">Animals</span>
+                </div>
+            </div>
+        </div>        
+    </t>
+</template>

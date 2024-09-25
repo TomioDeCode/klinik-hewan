@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+
+    <!--Action Client-->
+    <record id="project_dashboard_action_client" model="ir.actions.client">
+        <field name="name">Dashbaord</field>
+        <field name="tag">klinik_dashboard_main</field>
+    </record>
+
+    <!-- Menu     -->
+    <menuitem id="project_menu_open_dashboard" name="Dashboard" action="project_dashboard_action_client"
+              parent="menu_klinik_root" sequence="1" />
+
+</odoo>

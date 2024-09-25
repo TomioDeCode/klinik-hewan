@@ -44,3 +44,7 @@ class KlinikPelanggan(models.Model):
                 "default_pet_id": self.pet_ids[0].id if self.pet_ids else False,
             },
         }
+
+    @api.model
+    def count_cust(self):
+        return self.search_count([])

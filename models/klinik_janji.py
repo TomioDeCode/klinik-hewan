@@ -58,3 +58,7 @@ class KlinikAppointment(models.Model):
         if self.room_id:
             self.room_id.free_room()
         self.write({"state": "cancelled"})
+
+    @api.model
+    def count_janji(self):
+        return self.search_count([])

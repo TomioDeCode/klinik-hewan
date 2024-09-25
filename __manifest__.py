@@ -7,6 +7,7 @@
     'depends': ['base', 'product'],
     "data": [
         "security/ir.model.access.csv",
+
         "views/klinik_hewan_views.xml",
         "views/res_partner_views.xml",
         "views/product_template_views.xml",
@@ -16,8 +17,19 @@
         "views/klinik_dokter_views.xml",
         "views/klinik_resep_views.xml",
         "views/klinik_ruangan_views.xml",
+        "views/klinik_pembayaran_views.xml",
+        "views/dashboard_views.xml",
         "views/klinik_menus.xml",
+
+        "views/reports/ouput_pdf/klinik_pembayaran_report.xml",
     ],
+    'assets': {
+        'web.assets_backend': [
+            'klinik_hewan/static/src/js/dashboard.js',
+            'klinik_hewan/static/src/css/dashboard.css',
+            'klinik_hewan/static/src/xml/dashboard.xml',
+        ]
+    },
     'installable': True,
     'application': True,
 }

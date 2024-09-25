@@ -4,7 +4,7 @@
   <menuitem
     id="menu_klinik_root"
     name="Klinik"
-    sequence="1"
+    sequence="0"
   />
 
   <!-- Patient View -->
@@ -57,6 +57,9 @@
     action="action_klinik_ruangan"
     sequence="2"
   />
+
+  <menuitem id="menu_klinik_pembayaran" name="Pembayaran" parent="menu_appoiment"
+    action="action_klinik_pembayaran" />
 
   <!-- Appoiment View -->
 

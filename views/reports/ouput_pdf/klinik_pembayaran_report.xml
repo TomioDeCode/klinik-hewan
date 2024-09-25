@@ -1,0 +1,56 @@
+<odoo>
+  <data>
+    <record id="klinik_pembayaran_report_action" model="ir.actions.report">
+      <field name="name">Klinik Pembayaran Receipt</field>
+      <field name="model">klinik.pembayaran</field>
+      <field name="report_type">qweb-pdf</field>
+      <field name="report_name">klinik_hewan.report_klinik_pembayaran_template</field>
+      <field name="report_file">klinik_hewan.report_klinik_pembayaran_template</field>
+      <field name="print_report_name">'Receipt - %s' % (object.name)</field>
+      <field name="binding_model_id" ref="klinik_hewan.model_klinik_pembayaran" />
+      <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_klinik_pembayaran_template">
+      <t t-call="web.external_layout">
+        <div class="page">
+          <h2>Klinik Pembayaran Receipt</h2>
+          <main>
+            <div class="receipt">
+              <h3>Payment Receipt for <span t-field="docs[0].name" /></h3>
+              <p>
+                <strong>Payment Method:</strong>
+                <span t-field="docs[0].payment_method" />
+              </p>
+              <p>
+                <strong>Amount Paid:</strong>
+                <span t-field="docs[0].amount" />
+              </p>
+              <p>
+                <strong>Change:</strong>
+                <span t-field="docs[0].change" />
+              </p>
+              <p>
+                <strong>Payment Date:</strong>
+                <span t-field="docs[0].payment_date" />
+              </p>
+              <p>
+                <strong>Status:</strong>
+                <span t-field="docs[0].state" />
+              </p>
+              <h3>Related Prescription:</h3>
+              <p>
+                <strong>Prescription ID:</strong>
+                <span t-field="docs[0].resep_id.name" />
+              </p>
+              <p>
+                <strong>Total Price:</strong>
+                <span t-field="docs[0].total_price" />
+              </p>
+            </div>
+          </main>
+        </div>
+      </t>
+    </template>
+  </data>
+</odoo>

@@ -1,0 +1,68 @@
+.dashboard-main {
+  display: flex;
+  /* Enable flexbox */
+  justify-content: center;
+  /* Center items horizontally */
+  align-items: center;
+  /* Center items vertically (if necessary) */
+  margin: 20px;
+  /* Add some margin for spacing */
+}
+
+.project-count-row {
+  display: flex;
+  /* Make the container a flexbox */
+  justify-content: space-between;
+  /* Space out items evenly */
+  align-items: center;
+  /* Center align items vertically */
+  flex-wrap: wrap;
+  /* Allow items to wrap on smaller screens */
+  max-width: 1200px;
+  /* Set a max-width for the row */
+  width: 100%;
+  /* Make it full width */
+}
+
+.project-count-container {
+  flex: 1;
+  /* Make each item take equal space */
+  max-width: 23%;
+  /* Set a max-width for each item */
+  margin: 10px;
+  /* Adjusted margin for spacing */
+  text-align: center;
+  /* Center the text */
+  background-color: #f9f9f9;
+  /* Light background */
+  border-radius: 8px;
+  /* Rounded corners */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  /* Soft shadow */
+  padding: 20px;
+  /* Padding inside the container */
+}
+
+.project_count {
+  font-size: 2.5rem;
+  /* Large font size for the count */
+  font-weight: bold;
+  /* Bold font for emphasis */
+  color: #007bff;
+  /* Blue color */
+  display: block;
+  /* Block display to center */
+}
+
+.project_box_title {
+  font-size: 1.2rem;
+  /* Slightly larger title font */
+  color: #555;
+  /* Gray color for the title */
+  text-transform: uppercase;
+  /* Uppercase letters */
+  margin-top: 10px;
+  /* Space above the title */
+  font-weight: 600;
+  /* Semi-bold for the title */
+}

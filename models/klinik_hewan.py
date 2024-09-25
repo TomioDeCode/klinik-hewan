@@ -1,4 +1,4 @@
-from odoo import fields, models
+from odoo import fields, models, api
 
 
 class KlinikHewan(models.Model):
@@ -32,3 +32,7 @@ class KlinikHewan(models.Model):
     # Date ID
     create_date = fields.Datetime(string="Dibuat Pada", readonly=True)
     write_date = fields.Datetime(string="Diperbarui Pada", readonly=True)
+
+    @api.model
+    def count_animals(self):
+        return self.search_count([])

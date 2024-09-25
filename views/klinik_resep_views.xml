@@ -40,6 +40,12 @@
                         <field name="commission_amount" />
                         <field name="final_price" />
                     </group>
+                    <group>
+                        <button string="Pembayaran" type="object"
+                            name="action_redirect_to_payment"
+                            class="btn-primary"
+                        />
+                    </group>
                 </sheet>
             </form>
         </field>

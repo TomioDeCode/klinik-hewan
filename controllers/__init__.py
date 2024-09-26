@@ -1,1 +1,1 @@
-from . import hewan_controller, pelanggan_controller, dokter_controller, janji_controller
+from . import hewan_controller, pelanggan_controller, dokter_controller, janji_controller, detail_controller, janji_controller, pembayaran_controller, visit_controller

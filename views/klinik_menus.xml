@@ -32,6 +32,14 @@
     action="action_klini_pelanggan"
   />
 
+  <menuitem
+    id="menu_klinik_visit"
+    name="Visits"
+    parent="menu_patient"
+    sequence="3"
+    action="action_klinik_visit"
+  />
+
   <!-- Patient View -->
 
   <!-- Appoiment View -->

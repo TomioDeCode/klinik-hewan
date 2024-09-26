@@ -12,9 +12,7 @@ class KlinikAppointment(models.Model):
     pet_id = fields.Many2one("klinik.hewan", string="Pet", required=True)
     dokter_id = fields.Many2one("klinik.dokter", string="Dokter", required=True)
     appointment_date = fields.Datetime(string="Appointment Date", required=True)
-    room_id = fields.Many2one(
-        "klinik.ruangan", string="Room"
-    )
+    room_id = fields.Many2one("klinik.ruangan", string="Room")
     notes = fields.Text(string="Notes")
     state = fields.Selection(
         [
@@ -44,9 +42,7 @@ class KlinikAppointment(models.Model):
     def action_confirm(self):
         if self.room_id and not self.room_id.check_availability(self.appointment_date):
             raise UserError("The selected room is not available at this time.")
-        self.room_id.book_room(
-            self.appointment_date + timedelta(hours=1)
-        )
+        self.room_id.book_room(self.appointment_date + timedelta(hours=1))
         self.write({"state": "confirmed"})
 
     def action_done(self):
@@ -62,3 +58,16 @@ class KlinikAppointment(models.Model):
     @api.model
     def count_janji(self):
         return self.search_count([])
+
+    @api.model
+    def get_appointments_for_day(self, day_offset=0):
+        today = fields.Datetime.now()
+        target_day_start = today + timedelta(days=day_offset)
+        target_day_end = target_day_start + timedelta(days=1)
+
+        return self.search(
+            [
+                ("appointment_date", ">=", target_day_start),
+                ("appointment_date", "<", target_day_end),
+            ]
+        )

@@ -1,0 +1,69 @@
+<odoo>
+    <record id="view_klinik_visit_form" model="ir.ui.view">
+        <field name="name">klinik.visit.form</field>
+        <field name="model">klinik.visit</field>
+        <field name="arch" type="xml">
+            <form string="Visit">
+                <header>
+                    <button name="action_start" type="object" string="Start"
+                        invisible="state=='draft'"
+                        class="btn-primary" />
+                    <button name="action_done" type="object" string="Done"
+                        invisible="state=='in_progress'"
+                        class="btn-success" />
+                    <button name="action_cancel" type="object" string="Cancel"
+                        invisible="state=='in_progress' and state=='draft'"
+                        class="btn-danger" />
+                    <field name="state" widget="statusbar"
+                        statusbar_visible="draft,in_progress,done,cancelled" />
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" readonly="1" />
+                            <field name="partner_id" required="1" />
+                            <field name="pet_ids" widget="many2many_tags"
+                                options="{'no_create': True}" required="1" />
+                            <field name="dokter_id" required="1" />
+                            <field name="visit_date" required="1" />
+                        </group>
+                        <group>
+                            <field name="service_ids" widget="many2many_tags"
+                                options="{'no_create': True}" />
+                            <field name="total_price" readonly="1" />
+                            <field name="notes" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_klinik_visit_tree" model="ir.ui.view">
+        <field name="name">klinik.visit.tree</field>
+        <field name="model">klinik.visit</field>
+        <field name="arch" type="xml">
+            <tree string="Visit List" default_order="visit_date desc">
+                <field name="name" />
+                <field name="partner_id" />
+                <field name="pet_ids" />
+                <field name="dokter_id" />
+                <field name="visit_date" />
+                <field name="total_price" />
+                <field name="state" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- Action for Visit -->
+    <record id="action_klinik_visit" model="ir.actions.act_window">
+        <field name="name">Visits</field>
+        <field name="res_model">klinik.visit</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create a new clinic visit.
+            </p>
+        </field>
+    </record>
+</odoo>

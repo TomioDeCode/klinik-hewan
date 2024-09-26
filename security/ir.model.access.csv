@@ -8,3 +8,4 @@ access_klinik_ruangan_manager,klinik_ruangan_manager,model_klinik_ruangan,,1,1,1
 access_klinik_dokter_manager,klinik_dokter_manager,model_klinik_dokter,,1,1,1,1
 access_klinik_resep_manager,klinik_resep_manager,model_klinik_resep,,1,1,1,1
 access_klinik_pembayaran_manager,klinik_pembayaran_manager,model_klinik_pembayaran,,1,1,1,1
+access_klinik_visit_manager,klinik_visit_manager,model_klinik_visit,,1,1,1,1

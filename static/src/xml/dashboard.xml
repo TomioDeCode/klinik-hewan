@@ -1,37 +1,185 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <template id="template_project" xml:space="preserve">
     <t t-name="KlinikDashBoardMain">
-        <div class="dashboard-main">
-            <div class="project-count-row">
-                <div class="col-md-3 project-count-container"> 
-                    <span class="project_count" id="total_projects">
-                        <t t-esc="this.client_state.client_count"/>
-                    </span>
-                    <br/>
-                    <span class="project_box_title">Clients</span>
+        <div class="container my-4 vh-100 overflow-auto bg-light w-100">
+            <h2 class="text-center text-primary mb-4">Klinik Dashboard</h2>
+
+            <!-- KPI Cards Row -->
+            <div class="row g-4 mb-4">
+                <div class="col-md-3 col-sm-6">
+                    <div class="card shadow-sm rounded text-center">
+                        <div class="card-body">
+                            <h3 class="project_count text-success">
+                                <t t-esc="this.client_state.client_count"/>
+                            </h3>
+                            <p class="project_box_title">Clients</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-3 project-count-container"> 
-                    <span class="project_count" id="total_projects">
-                        <t t-esc="this.dokter_state.dokter_count"/>
-                    </span>
-                    <br/>
-                    <span class="project_box_title">Doctors</span>
+                <div class="col-md-3 col-sm-6">
+                    <div class="card shadow-sm rounded text-center">
+                        <div class="card-body">
+                            <h3 class="project_count text-info">
+                                <t t-esc="this.dokter_state.dokter_count"/>
+                            </h3>
+                            <p class="project_box_title">Doctors</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-3 project-count-container"> 
-                    <span class="project_count" id="total_projects">
-                        <t t-esc="this.janji_state.janji_count"/>
-                    </span>
-                    <br/>
-                    <span class="project_box_title">Appointments</span>
+                <div class="col-md-3 col-sm-6">
+                    <div class="card shadow-sm rounded text-center">
+                        <div class="card-body">
+                            <h3 class="project_count text-warning">
+                                <t t-esc="this.janji_state.janji_count"/>
+                            </h3>
+                            <p class="project_box_title">Appointments</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-3 project-count-container"> 
-                    <span class="project_count" id="total_projects">
-                        <t t-esc="this.animal_state.animal_count"/>
-                    </span>
-                    <br/>
-                    <span class="project_box_title">Animals</span>
+                <div class="col-md-3 col-sm-6">
+                    <div class="card shadow-sm rounded text-center">
+                        <div class="card-body">
+                            <h3 class="project_count text-danger">
+                                <t t-esc="this.animal_state.animal_count"/>
+                            </h3>
+                            <p class="project_box_title">Animals</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>        
+
+            <!-- Tables Section -->
+            <div class="row g-4">
+                <!-- Visits Today Table -->
+                <div class="col-lg-12">
+                    <div class="section">
+                        <h3 class="section-title text-primary">Visits Today</h3>
+                        <div class="table-container mb-4">
+                            <table id="visitsTable" class="table table-striped table-hover shadow-sm w-100">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Customer</th>
+                                        <th>Pets</th>
+                                        <th>Doctor</th>
+                                        <th>Visit Date</th>
+                                        <th>Total Price</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="visit_state.visit_ids" t-as="visit" t-key="visit.id">
+                                        <tr>
+                                            <td class="text-truncate"><t t-esc="visit.name"/></td>
+                                            <td class="text-truncate"><t t-esc="visit.partner_id"/></td>
+                                            <td class="text-truncate"><t t-esc="visit.pet_ids.join(', ')"/></td>
+                                            <td class="text-truncate"><t t-esc="visit.dokter_id.name"/></td>
+                                            <td class="text-truncate"><t t-esc="visit.visit_date"/></td>
+                                            <td class="text-truncate"><t t-esc="visit.total_price"/></td>
+                                            <td class="text-truncate"><t t-esc="visit.state"/></td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payments Table -->
+                <div class="col-lg-12">
+                    <div class="section">
+                        <h3 class="section-title text-primary">Payments</h3>
+                        <div class="table-container mb-4">
+                            <table id="paymentsTable" class="table table-striped table-hover shadow-sm w-100">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>Payment Reference</th>
+                                        <th>Resep ID</th>
+                                        <th>Total Price</th>
+                                        <th>Amount</th>
+                                        <th>Change</th>
+                                        <th>Payment Method</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="pay_state.pay_ids" t-as="payment" t-key="payment.name">
+                                        <tr>
+                                            <td class="text-truncate"><t t-esc="payment.name"/></td>
+                                            <td class="text-truncate"><t t-esc="payment.resep_id"/></td>
+                                            <td class="text-truncate"><t t-esc="payment.total_price"/></td>
+                                            <td class="text-truncate"><t t-esc="payment.amount"/></td>
+                                            <td class="text-truncate"><t t-esc="payment.change"/></td>
+                                            <td class="text-truncate"><t t-esc="payment.payment_method"/></td>
+                                            <td class="text-truncate"><t t-esc="payment.state"/></td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12">
+                    <div class="section">
+                        <h3 class="section-title text-primary">Appointments</h3>
+                        <div class="table-container">
+                            <table id="appointmentsTable" class="table table-striped table-hover shadow-sm w-100">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Customer</th>
+                                        <th>Pet</th>
+                                        <th>Doctor</th>
+                                        <th>Appointment Date</th>
+                                        <th>Room</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="janji_state.janji_ids" t-as="appointment" t-key="appointment.name">
+                                        <tr>
+                                            <td class="text-truncate"><t t-esc="appointment.name"/></td>
+                                            <td class="text-truncate"><t t-esc="appointment.customer"/></td>
+                                            <td class="text-truncate"><t t-esc="appointment.pet"/></td>
+                                            <td class="text-truncate"><t t-esc="appointment.dokter"/></td>
+                                            <td class="text-truncate"><t t-esc="appointment.appointment_date"/></td>
+                                            <td class="text-truncate"><t t-esc="appointment.room"/></td>
+                                            <td class="text-truncate"><t t-esc="appointment.status"/></td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 mb-10">
+                    <div class="section">
+                        <h3 class="section-title text-primary">Layanan</h3>
+                        <div class="table-container">
+                            <table id="layananTable" class="table table-striped table-hover shadow-sm w-100">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>Service</th>
+                                        <th>Commission</th>
+                                        <th>Total Sales</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="detail_state.detail_ids" t-as="detail" t-key="detail.service">
+                                        <tr>
+                                            <td class="text-truncate"><t t-esc="detail.service"/></td>
+                                            <td class="text-truncate"><t t-esc="detail.commission"/></td>
+                                            <td class="text-truncate"><t t-esc="detail.total_sales"/></td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </t>
 </template>

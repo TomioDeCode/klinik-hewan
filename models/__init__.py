@@ -8,3 +8,4 @@ from . import klinik_ruangan
 from . import klinik_dokter
 from . import klinik_resep
 from . import klinik_pembayaran
+from . import klinik_visit
